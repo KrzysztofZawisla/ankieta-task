@@ -1,0 +1,35 @@
+{
+	"header": "Survey",
+	"horizontal-select": {
+		"multiselect": {
+			"label": "Choose 2 or more"
+		}
+	},
+	"steps": {
+		"first": {
+			"header": "Basic information:",
+			"button": "Go next",
+			"inputs": {
+				"name": {
+					"label": "First name"
+				},
+				"surname": {
+					"label": "Surname"
+				},
+				"email": {
+					"label": "Email"
+				}
+			}
+		},
+		"second": {
+			"button": "Go next"
+		},
+		"third": {
+			"button": "Send survey!",
+			"error-box": {
+				"success": "Thank you! We got your survey.",
+				"error": "Something went wrong! Try again"
+			}
+		}
+	}
+}

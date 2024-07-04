@@ -1,35 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import App from './views/App'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import './index.css'
-import Survey from './views/Survey'
-import Step from './views/Step'
+import routesAsRouterContent from './constants/routes-as-router-content/routes-as-router-content'
+import App from './components/app/app'
+import initTranslations from './utils/translations/init-trasnlations/init-trasnlations'
 
-const router = createBrowserRouter([
-	{
-		path: '/',
-		children: [
-			{
-				path: '/',
-				element: <App />,
-			},
-			{
-				path: 'survey',
-				element: <Survey />,
-			},
-			{
-				path: 'survey/step/:stepId',
-				element: <Step />,
-			},
-		],
-	},
-])
+const run = async () => {
+	const rootElement = document.getElementById('root')
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-	<React.StrictMode>
-		<div className='w-[390px] h-[844px] max-w-dvw max-h-dvh flex flex-col bg-background'>
-			<RouterProvider router={router} />
-		</div>
-	</React.StrictMode>,
-)
+	if (rootElement) {
+		const translationsPromise = initTranslations()
+		const router = createBrowserRouter(routesAsRouterContent)
+		const translations = await translationsPromise
+		createRoot(rootElement).render(
+			<StrictMode>
+				<App translations={translations} router={<RouterProvider router={router} />} />
+			</StrictMode>,
+		)
+	}
+}
+
+run()

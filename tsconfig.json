@@ -1,11 +1,54 @@
 {
-	"files": [],
-	"references": [
-		{
-			"path": "./tsconfig.app.json"
+	"ts-node": {
+		"swc": true,
+		"transpileOnly": true,
+		"require": [
+			"typescript-transform-paths/register",
+			"tsconfig-paths/register"
+		]
+	},
+	"compilerOptions": {
+		"verbatimModuleSyntax": true,
+		"incremental": true,
+		"jsx": "react-jsx",
+		"target": "esnext",
+		"lib": ["esnext", "dom", "dom.iterable"],
+		"esModuleInterop": true,
+		"allowSyntheticDefaultImports": true,
+		"strict": true,
+		"sourceMap": true,
+		"alwaysStrict": true,
+		"module": "ESNext",
+		"moduleResolution": "node",
+		"resolveJsonModule": true,
+		"strictNullChecks": true,
+		"noImplicitAny": true,
+		"downlevelIteration": true,
+		"pretty": true,
+		"isolatedModules": true,
+		"noUnusedLocals": true,
+		"noUnusedParameters": true,
+		"removeComments": true,
+		"skipLibCheck": true,
+		"checkJs": true,
+		"strictFunctionTypes": true,
+		"importHelpers": true,
+		"strictBindCallApply": true,
+		"strictPropertyInitialization": true,
+		"noImplicitThis": true,
+		"noImplicitReturns": true,
+		"noFallthroughCasesInSwitch": true,
+		"forceConsistentCasingInFileNames": true,
+		"baseUrl": ".",
+		"paths": {
+			"~frontend/*": ["*"],
 		},
-		{
-			"path": "./tsconfig.node.json"
-		}
+		"plugins": [{
+			"transform": "typescript-transform-paths"
+		}]
+	},
+	"include": ["."],
+	"exclude": [
+		"node_modules",
 	]
 }

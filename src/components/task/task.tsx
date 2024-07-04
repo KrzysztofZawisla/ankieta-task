@@ -1,4 +1,4 @@
-import { figmaUrl } from '../examples'
+import { figmaUrl } from '../../examples'
 
 export default function Task() {
 	return (

@@ -1,0 +1,35 @@
+{
+	"header": "Ankieta",
+	"horizontal-select": {
+		"multiselect": {
+			"label": "Wybierz 2 lub więcej"
+		}
+	},
+	"steps": {
+		"first": {
+			"header": "Podstawowe informacje:",
+			"button": "Dalej",
+			"inputs": {
+				"name": {
+					"label": "Imię"
+				},
+				"surname": {
+					"label": "Nazwisko"
+				},
+				"email": {
+					"label": "Email"
+				}
+			}
+		},
+		"second": {
+			"button": "Dalej"
+		},
+		"third": {
+			"button": "Wyślij ankietę!",
+			"error-box": {
+				"success": "Dziękujemy! Otrzymaliśmy ankietę.",
+				"error": "Coś poszło nie tak! Spróbuj ponownie."
+			}
+		}
+	}
+}

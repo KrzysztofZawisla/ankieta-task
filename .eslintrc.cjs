@@ -8,4 +8,12 @@ module.exports = {
 	rules: {
 		'react-refresh/only-export-components': 'off',
 	},
+	overrides: [
+		{
+			files: ['*.js'],
+			rules: {
+				'@typescript-eslint/no-var-requires': 'off',
+			},
+		},
+	],
 }

@@ -1,13 +1,14 @@
 import { useNavigate } from 'react-router-dom'
-import Task from '../components/Task'
-import { Button } from '../components/Button'
-import { Separator } from '../components/Separator'
-import { draftExample, surveyExample } from '../examples'
+import Button from '../../components/button/button'
+import useSurveysStore from '../../stores/surveys-store/surveys-store'
+import store from 'store2'
+import Separator from '../../components/seperator/separator'
+import Task from '../../components/task/task'
 
 export default function App() {
 	const navigate = useNavigate()
-	const openSurvey = () => navigate('/survey')
-
+	const openSurvey = () => navigate('/survey/step/1')
+	const { surveys, popSurvey } = useSurveysStore()
 	return (
 		<>
 			<div className='z-10 bg-white h-[62px] relative flex items-center px-5'>
@@ -20,14 +21,21 @@ export default function App() {
 			<div className='flex-1 overflow-auto py-7 px-5 gap-5 flex flex-col'>
 				<div className='flex flex-col gap-1'>
 					<div className='text-foreground text-xl'>Autor:</div>
-					<div className='text-pink-intense text-lg'>Imię Nazwisko</div>
+					<div className='text-pink-intense text-lg'>Krzysztof Zawisła</div>
 				</div>
 
 				<Separator />
 
 				<div className='text-foreground text-xl'>Formularz:</div>
 				<Button onClick={openSurvey}>Wypełnij ankietę</Button>
-				<Button variant={'secondary'}>Usuń ostatnią</Button>
+				<Button
+					variant='secondary'
+					onClick={() => {
+						popSurvey()
+					}}
+				>
+					Usuń ostatnią
+				</Button>
 
 				<Separator />
 
@@ -37,7 +45,7 @@ export default function App() {
 				</div>
 
 				<div className='bg-white p-2.5 text-grey-600 text-sm tracking-normal font-medium rounded-[10px] font-mono'>
-					<pre>{draftExample}</pre>
+					<pre className='overflow-x-auto'>{JSON.stringify(store.get('current-form') ?? {}, null, 2)}</pre>
 				</div>
 
 				<Separator />
@@ -48,7 +56,7 @@ export default function App() {
 				</div>
 
 				<div className='bg-white p-2.5 text-grey-600 text-sm tracking-normal font-medium rounded-[10px] font-mono'>
-					<pre>{surveyExample}</pre>
+					<pre className='overflow-x-auto'>{JSON.stringify(surveys, null, 2)}</pre>
 				</div>
 
 				<Separator />
